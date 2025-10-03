@@ -24,3 +24,6 @@ yarn-error.log*
 
 *storybook.log
 storybook-static
+
+# Reference materials - do not commit
+moego-reference/
