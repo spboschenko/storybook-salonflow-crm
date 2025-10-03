@@ -1,0 +1,217 @@
+/* src/components/CrmToggleWrapper/CrmToggleWrapper.css */
+
+/* Базовая обёртка */
+.crm-toggle-wrapper {
+  transition: all 0.2s ease;
+}
+
+/* Вариант по умолчанию - без дополнительного оформления */
+.crm-toggle-wrapper--default {
+  display: block;
+}
+
+/* Вариант кнопки */
+.crm-toggle-wrapper--button {
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 12px 16px;
+  background: #ffffff;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+  min-height: 48px;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.016);
+}
+
+.crm-toggle-wrapper--button:hover {
+  border-color: var(--color-primary, #9370DB);
+  background: rgba(147, 112, 219, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.crm-toggle-wrapper--button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.016);
+}
+
+/* Состояние выбрано для кнопки */
+.crm-toggle-wrapper--button:has(.crm-checkbox__input .ant-checkbox-checked),
+.crm-toggle-wrapper--button:has(.crm-radio__input .ant-radio-checked) {
+  border-color: var(--color-primary, #9370DB);
+  background: rgba(147, 112, 219, 0.1);
+  box-shadow: 0 0 0 1px rgba(147, 112, 219, 0.2);
+}
+
+/* Вариант карточки */
+.crm-toggle-wrapper--card {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  min-height: 56px;
+}
+
+.crm-toggle-wrapper--card:hover {
+  border-color: var(--color-primary, #9370DB);
+  box-shadow: 0 2px 8px rgba(147, 112, 219, 0.15);
+}
+
+/* Состояние выбрано для карточки */
+.crm-toggle-wrapper--card:has(.crm-checkbox__input .ant-checkbox-checked),
+.crm-toggle-wrapper--card:has(.crm-radio__input .ant-radio-checked) {
+  border-color: var(--color-primary, #9370DB);
+  background: rgba(147, 112, 219, 0.05);
+  box-shadow: 0 2px 8px rgba(147, 112, 219, 0.2);
+}
+
+/* Размеры для кнопки */
+.crm-toggle-wrapper--button.crm-toggle-wrapper--small {
+  padding: 8px 12px;
+  font-size: 12px;
+  min-height: 40px;
+}
+
+.crm-toggle-wrapper--button.crm-toggle-wrapper--medium {
+  padding: 12px 16px;
+  font-size: 14px;
+  min-height: 48px;
+}
+
+.crm-toggle-wrapper--button.crm-toggle-wrapper--large {
+  padding: 16px 20px;
+  font-size: 16px;
+  min-height: 56px;
+}
+
+/* Размеры для карточки */
+.crm-toggle-wrapper--card.crm-toggle-wrapper--small {
+  padding: 12px;
+  font-size: 12px;
+  min-height: 48px;
+}
+
+.crm-toggle-wrapper--card.crm-toggle-wrapper--medium {
+  padding: 16px;
+  font-size: 14px;
+  min-height: 56px;
+}
+
+.crm-toggle-wrapper--card.crm-toggle-wrapper--large {
+  padding: 20px;
+  font-size: 16px;
+  min-height: 64px;
+}
+
+/* Отключенное состояние */
+.crm-toggle-wrapper--button:has(.crm-checkbox__input.ant-checkbox-wrapper-disabled),
+.crm-toggle-wrapper--button:has(.crm-radio__input.ant-radio-wrapper-disabled) {
+  background: #f5f5f5;
+  border-color: #d9d9d9;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.crm-toggle-wrapper--card:has(.crm-checkbox__input.ant-checkbox-wrapper-disabled),
+.crm-toggle-wrapper--card:has(.crm-radio__input.ant-radio-wrapper-disabled) {
+  background: #f5f5f5;
+  border-color: #d9d9d9;
+  cursor: not-allowed;
+  opacity: 0.6;
+  box-shadow: none;
+}
+
+/* Группы */
+.crm-toggle-group-wrapper {
+  margin-bottom: 16px;
+}
+
+.crm-toggle-group-title {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-color, #333);
+  margin-bottom: 12px;
+}
+
+.crm-toggle-group-required {
+  color: var(--color-error, #ff4d4f);
+  margin-left: 2px;
+}
+
+.crm-toggle-group {
+  display: flex;
+  gap: 8px;
+}
+
+.crm-toggle-group--vertical {
+  flex-direction: column;
+}
+
+.crm-toggle-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+/* Специальные отступы для горизонтальных групп */
+.crm-toggle-group--horizontal.crm-toggle-group--button {
+  gap: 12px;
+}
+
+.crm-toggle-group--horizontal.crm-toggle-group--card {
+  gap: 16px;
+}
+
+/* Убираем нижние отступы в группах */
+.crm-toggle-group .crm-toggle-wrapper--button {
+  margin-bottom: 0;
+}
+
+.crm-toggle-group .crm-toggle-wrapper--card {
+  margin-bottom: 0;
+}
+
+/* Радио группа */
+.crm-toggle-group__radio-group {
+  display: contents;
+}
+
+/* Состояния группы */
+.crm-toggle-group--error .crm-toggle-wrapper {
+  border-color: var(--color-error, #ff4d4f);
+}
+
+.crm-toggle-group--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.crm-toggle-group-error {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-error, #ff4d4f);
+  line-height: 1.4;
+}
+
+.crm-toggle-group-helper {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-color-secondary, #666);
+  line-height: 1.4;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .crm-toggle-group--horizontal {
+    flex-direction: column;
+  }
+  
+  .crm-toggle-wrapper--button {
+    margin-bottom: 8px;
+  }
+  
+  .crm-toggle-wrapper--card {
+    margin-bottom: 8px;
+  }
+}
