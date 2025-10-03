@@ -1,13 +1,13 @@
-// src/components/CrmFormLayout/CrmFormLayout.stories.tsx
+// src/stories/DesignSystem/Layout/CrmFormLayout.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { Form, Input, Select, DatePicker, Switch, InputNumber, Button } from 'antd';
-import { CrmFormLayout } from './CrmFormLayout';
+import { CrmFormLayout } from '../../../components/CrmFormLayout/CrmFormLayout';
 
 const { TextArea } = Input;
 const { Option } = Select;
 
 const meta: Meta<typeof CrmFormLayout> = {
-  title: 'CRM Components/CrmFormLayout',
+  title: 'Design System/Layout/CrmFormLayout',
   component: CrmFormLayout,
   parameters: {
     layout: 'padded',

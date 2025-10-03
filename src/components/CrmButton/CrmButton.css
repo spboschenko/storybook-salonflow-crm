@@ -1,0 +1,123 @@
+/* src/components/CrmButton/CrmButton.css */
+
+.crm-button {
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.016);
+}
+
+.crm-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12);
+}
+
+.crm-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.016);
+}
+
+/* Full width variant */
+.crm-button--full-width {
+  width: 100%;
+}
+
+/* Success variant */
+.crm-button--success {
+  background-color: var(--color-success, #52c41a);
+  border-color: var(--color-success, #52c41a);
+  color: white;
+}
+
+.crm-button--success:hover {
+  background-color: var(--color-success-hover, #73d13d);
+  border-color: var(--color-success-hover, #73d13d);
+  color: white;
+}
+
+.crm-button--success:focus {
+  background-color: var(--color-success, #52c41a);
+  border-color: var(--color-success, #52c41a);
+  color: white;
+}
+
+/* Warning variant */
+.crm-button--warning {
+  background-color: var(--color-warning, #faad14);
+  border-color: var(--color-warning, #faad14);
+  color: white;
+}
+
+.crm-button--warning:hover {
+  background-color: var(--color-warning-hover, #ffc53d);
+  border-color: var(--color-warning-hover, #ffc53d);
+  color: white;
+}
+
+.crm-button--warning:focus {
+  background-color: var(--color-warning, #faad14);
+  border-color: var(--color-warning, #faad14);
+  color: white;
+}
+
+/* Danger variant */
+.crm-button--danger {
+  background-color: var(--color-error, #ff4d4f);
+  border-color: var(--color-error, #ff4d4f);
+  color: white;
+}
+
+.crm-button--danger:hover {
+  background-color: var(--color-error-hover, #ff7875);
+  border-color: var(--color-error-hover, #ff7875);
+  color: white;
+}
+
+.crm-button--danger:focus {
+  background-color: var(--color-error, #ff4d4f);
+  border-color: var(--color-error, #ff4d4f);
+  color: white;
+}
+
+/* Ghost variant */
+.crm-button--ghost {
+  background-color: transparent;
+  border: 1px solid var(--color-primary, #9370DB);
+  color: var(--color-primary, #9370DB);
+}
+
+.crm-button--ghost:hover {
+  background-color: var(--color-primary-light, #E6E6FA);
+  border-color: var(--color-primary, #9370DB);
+  color: var(--color-primary, #9370DB);
+}
+
+/* Secondary variant */
+.crm-button--secondary {
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+  color: var(--text-color, #333);
+}
+
+.crm-button--secondary:hover {
+  background-color: #e6e6e6;
+  border-color: #b7b7b7;
+  color: var(--text-color, #333);
+}
+
+/* Link variant styling */
+.crm-button--link {
+  color: var(--color-primary, #9370DB);
+  padding: 0;
+  height: auto;
+  border: none;
+  background: none;
+  box-shadow: none;
+}
+
+.crm-button--link:hover {
+  color: var(--color-primary-hover, #8A2BE2);
+  background: none;
+  transform: none;
+  box-shadow: none;
+}

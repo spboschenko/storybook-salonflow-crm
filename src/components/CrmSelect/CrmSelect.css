@@ -1,0 +1,77 @@
+/* src/components/CrmSelect/CrmSelect.css */
+
+.crm-select-wrapper {
+  margin-bottom: 16px;
+}
+
+.crm-select-label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-color, #333);
+}
+
+.crm-select-required {
+  color: var(--color-error, #ff4d4f);
+  margin-left: 2px;
+}
+
+.crm-select {
+  border-radius: 6px;
+}
+
+.crm-select--full-width {
+  width: 100%;
+}
+
+.crm-select .ant-select-selector {
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.crm-select:not(.crm-select--error) .ant-select-selector:hover {
+  border-color: var(--color-primary-light, #B19CD9);
+}
+
+.crm-select:not(.crm-select--error) .ant-select-focused .ant-select-selector {
+  border-color: var(--color-primary, #9370DB);
+  box-shadow: 0 0 0 2px rgba(147, 112, 219, 0.1);
+}
+
+.crm-select--error .ant-select-selector {
+  border-color: var(--color-error, #ff4d4f);
+}
+
+.crm-select--error .ant-select-focused .ant-select-selector {
+  border-color: var(--color-error, #ff4d4f);
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1);
+}
+
+.crm-select-error {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-error, #ff4d4f);
+  line-height: 1.4;
+}
+
+.crm-select-helper {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-color-secondary, #666);
+  line-height: 1.4;
+}
+
+/* Dropdown styling */
+.crm-select .ant-select-dropdown {
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.crm-select .ant-select-item-option-selected {
+  background-color: var(--color-primary-light, #E6E6FA);
+}
+
+.crm-select .ant-select-item-option-active {
+  background-color: var(--color-primary-light, #E6E6FA);
+}

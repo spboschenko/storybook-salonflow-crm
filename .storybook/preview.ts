@@ -30,6 +30,19 @@ const preview: Preview = {
         },
       ],
     },
+    options: {
+      storySort: {
+        order: [
+          'Documentation',
+          ['Welcome'],
+          'Design System',
+          ['Forms', 'Navigation', 'Layout'],
+          'Examples',
+          ['Complete Forms'],
+          '*'
+        ],
+      },
+    },
   },
   decorators: [
     (Story) => {

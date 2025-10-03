@@ -1,0 +1,99 @@
+/* src/components/CrmTextArea/CrmTextArea.css */
+
+.crm-textarea-wrapper {
+  margin-bottom: 16px;
+}
+
+.crm-textarea-label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-color, #333);
+}
+
+.crm-textarea-required {
+  color: var(--color-error, #ff4d4f);
+  margin-left: 2px;
+}
+
+.crm-textarea {
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  resize: vertical;
+}
+
+.crm-textarea--full-width {
+  width: 100%;
+}
+
+.crm-textarea:focus {
+  border-color: var(--color-primary, #9370DB);
+  box-shadow: 0 0 0 2px rgba(147, 112, 219, 0.1);
+}
+
+.crm-textarea--error {
+  border-color: var(--color-error, #ff4d4f);
+}
+
+.crm-textarea--error:focus {
+  border-color: var(--color-error, #ff4d4f);
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1);
+}
+
+.crm-textarea-error {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-error, #ff4d4f);
+  line-height: 1.4;
+}
+
+.crm-textarea-helper {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-color-secondary, #666);
+  line-height: 1.4;
+}
+
+/* Hover states */
+.crm-textarea:hover {
+  border-color: var(--color-primary-light, #B19CD9);
+}
+
+.crm-textarea--error:hover {
+  border-color: var(--color-error, #ff4d4f);
+}
+
+/* Disabled state */
+.crm-textarea:disabled {
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+  color: #bfbfbf;
+  cursor: not-allowed;
+  resize: none;
+}
+
+/* Auto-resize styling */
+.crm-textarea.ant-input {
+  min-height: 80px;
+}
+
+/* Scrollbar styling for webkit browsers */
+.crm-textarea::-webkit-scrollbar {
+  width: 6px;
+}
+
+.crm-textarea::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 3px;
+}
+
+.crm-textarea::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.crm-textarea::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}

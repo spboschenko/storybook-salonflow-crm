@@ -1,4 +1,4 @@
-// src/stories/SidebarDemo.stories.tsx
+// src/stories/DesignSystem/Navigation/SidebarDemo.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { 
   UserOutlined, 
@@ -12,10 +12,10 @@ import {
   BarChartOutlined,
   CreditCardOutlined
 } from '@ant-design/icons';
-import { SidebarMenu } from '../components/SidebarMenu/SidebarMenu';
+import { SidebarMenu } from '../../../components/SidebarMenu/SidebarMenu';
 
 const meta: Meta<typeof SidebarMenu> = {
-  title: 'CRM/Sidebar Demo',
+  title: 'Design System/Navigation/Sidebar Demo',
   component: SidebarMenu,
   parameters: {
     layout: 'fullscreen',

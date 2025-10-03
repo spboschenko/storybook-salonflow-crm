@@ -1,0 +1,245 @@
+/* src/components/CrmDatePicker/CrmDatePicker.css */
+
+.crm-datepicker-wrapper,
+.crm-daterangepicker-wrapper,
+.crm-timepicker-wrapper {
+  margin-bottom: 16px;
+}
+
+.crm-datepicker-label,
+.crm-daterangepicker-label,
+.crm-timepicker-label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-color, #333);
+}
+
+.crm-datepicker-required,
+.crm-daterangepicker-required,
+.crm-timepicker-required {
+  color: var(--color-error, #ff4d4f);
+  margin-left: 2px;
+}
+
+.crm-datepicker,
+.crm-daterangepicker,
+.crm-timepicker {
+  border-radius: 6px;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.crm-datepicker--full-width,
+.crm-daterangepicker--full-width,
+.crm-timepicker--full-width {
+  width: 100%;
+}
+
+/* Размеры */
+.crm-datepicker--small,
+.crm-daterangepicker--small,
+.crm-timepicker--small {
+  font-size: 12px;
+}
+
+.crm-datepicker--medium,
+.crm-daterangepicker--medium,
+.crm-timepicker--medium {
+  font-size: 14px;
+}
+
+.crm-datepicker--large,
+.crm-daterangepicker--large,
+.crm-timepicker--large {
+  font-size: 16px;
+}
+
+/* Фокус состояния */
+.crm-datepicker:focus,
+.crm-daterangepicker:focus,
+.crm-timepicker:focus {
+  border-color: var(--color-primary, #9370DB);
+  box-shadow: 0 0 0 2px rgba(147, 112, 219, 0.1);
+  outline: none;
+}
+
+.crm-datepicker.ant-picker-focused,
+.crm-daterangepicker.ant-picker-focused,
+.crm-timepicker.ant-picker-focused {
+  border-color: var(--color-primary, #9370DB);
+  box-shadow: 0 0 0 2px rgba(147, 112, 219, 0.1);
+}
+
+/* Состояние ошибки */
+.crm-datepicker--error,
+.crm-daterangepicker--error,
+.crm-timepicker--error {
+  border-color: var(--color-error, #ff4d4f);
+}
+
+.crm-datepicker--error:focus,
+.crm-daterangepicker--error:focus,
+.crm-timepicker--error:focus {
+  border-color: var(--color-error, #ff4d4f);
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1);
+}
+
+.crm-datepicker--error.ant-picker-focused,
+.crm-daterangepicker--error.ant-picker-focused,
+.crm-timepicker--error.ant-picker-focused {
+  border-color: var(--color-error, #ff4d4f);
+  box-shadow: 0 0 0 2px rgba(255, 77, 79, 0.1);
+}
+
+.crm-datepicker-error,
+.crm-daterangepicker-error,
+.crm-timepicker-error {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-error, #ff4d4f);
+  line-height: 1.4;
+}
+
+.crm-datepicker-helper,
+.crm-daterangepicker-helper,
+.crm-timepicker-helper {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--text-color-secondary, #666);
+  line-height: 1.4;
+}
+
+/* Hover состояния */
+.crm-datepicker:hover,
+.crm-daterangepicker:hover,
+.crm-timepicker:hover {
+  border-color: var(--color-primary-light, #B19CD9);
+}
+
+.crm-datepicker--error:hover,
+.crm-daterangepicker--error:hover,
+.crm-timepicker--error:hover {
+  border-color: var(--color-error, #ff4d4f);
+}
+
+/* Отключенное состояние */
+.crm-datepicker.ant-picker-disabled,
+.crm-daterangepicker.ant-picker-disabled,
+.crm-timepicker.ant-picker-disabled {
+  background-color: #f5f5f5;
+  border-color: #d9d9d9;
+  color: #bfbfbf;
+  cursor: not-allowed;
+}
+
+/* Иконки */
+.crm-datepicker .ant-picker-suffix,
+.crm-daterangepicker .ant-picker-suffix,
+.crm-timepicker .ant-picker-suffix {
+  color: var(--color-primary, #9370DB);
+}
+
+.crm-datepicker .ant-picker-clear,
+.crm-daterangepicker .ant-picker-clear,
+.crm-timepicker .ant-picker-clear {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+/* Placeholder стили */
+.crm-datepicker .ant-picker-input input::placeholder,
+.crm-daterangepicker .ant-picker-input input::placeholder,
+.crm-timepicker .ant-picker-input input::placeholder {
+  color: #bfbfbf;
+  opacity: 1;
+}
+
+/* Кастомизация панели выбора даты */
+.crm-datepicker-panel,
+.crm-daterangepicker-panel,
+.crm-timepicker-panel {
+  border-radius: 8px;
+  box-shadow: 0 6px 16px 0 rgba(0, 0, 0, 0.08), 0 3px 6px -4px rgba(0, 0, 0, 0.12), 0 9px 28px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Выбранная дата */
+.crm-datepicker .ant-picker-cell-selected .ant-picker-cell-inner,
+.crm-daterangepicker .ant-picker-cell-selected .ant-picker-cell-inner,
+.crm-timepicker .ant-picker-cell-selected .ant-picker-cell-inner {
+  background-color: var(--color-primary, #9370DB);
+  border-color: var(--color-primary, #9370DB);
+}
+
+/* Диапазон дат */
+.crm-daterangepicker .ant-picker-cell-in-range::before {
+  background-color: rgba(147, 112, 219, 0.1);
+}
+
+.crm-daterangepicker .ant-picker-cell-range-start .ant-picker-cell-inner,
+.crm-daterangepicker .ant-picker-cell-range-end .ant-picker-cell-inner {
+  background-color: var(--color-primary, #9370DB);
+  border-color: var(--color-primary, #9370DB);
+}
+
+/* Hover эффекты в календаре */
+.crm-datepicker .ant-picker-cell:hover .ant-picker-cell-inner,
+.crm-daterangepicker .ant-picker-cell:hover .ant-picker-cell-inner {
+  background-color: rgba(147, 112, 219, 0.1);
+  border-color: rgba(147, 112, 219, 0.3);
+}
+
+/* Сегодняшняя дата */
+.crm-datepicker .ant-picker-cell-today .ant-picker-cell-inner,
+.crm-daterangepicker .ant-picker-cell-today .ant-picker-cell-inner {
+  border-color: var(--color-primary, #9370DB);
+  color: var(--color-primary, #9370DB);
+}
+
+/* Кнопки в панели */
+.crm-datepicker .ant-picker-today-btn,
+.crm-daterangepicker .ant-picker-today-btn {
+  color: var(--color-primary, #9370DB);
+}
+
+.crm-datepicker .ant-picker-today-btn:hover,
+.crm-daterangepicker .ant-picker-today-btn:hover {
+  color: var(--color-primary-light, #B19CD9);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .crm-daterangepicker {
+    width: 100%;
+  }
+  
+  .crm-daterangepicker .ant-picker-input {
+    flex: 1;
+  }
+}
+
+/* Анимации */
+.crm-datepicker,
+.crm-daterangepicker,
+.crm-timepicker {
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Кастомизация времени */
+.crm-timepicker .ant-picker-time-panel-column > li:hover {
+  background-color: rgba(147, 112, 219, 0.1);
+}
+
+.crm-timepicker .ant-picker-time-panel-column > li.ant-picker-time-panel-cell-selected {
+  background-color: rgba(147, 112, 219, 0.1);
+  color: var(--color-primary, #9370DB);
+}
+
+/* Кнопки времени */
+.crm-timepicker .ant-picker-now-btn {
+  color: var(--color-primary, #9370DB);
+}
+
+.crm-timepicker .ant-picker-now-btn:hover {
+  color: var(--color-primary-light, #B19CD9);
+}

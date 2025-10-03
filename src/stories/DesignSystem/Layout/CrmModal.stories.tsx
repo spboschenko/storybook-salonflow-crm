@@ -1,11 +1,11 @@
-// src/components/CrmModal/CrmModal.stories.tsx
+// src/stories/DesignSystem/Layout/CrmModal.stories.tsx
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
 import { useState } from 'react';
 import { Button, Form, Input, Select } from 'antd';
-import { CrmModal } from './CrmModal';
+import { CrmModal } from '../../../components/CrmModal/CrmModal';
 
 const meta: Meta<typeof CrmModal> = {
-  title: 'CRM Components/CrmModal',
+  title: 'Design System/Layout/CrmModal',
   component: CrmModal,
   parameters: {
     layout: 'centered',

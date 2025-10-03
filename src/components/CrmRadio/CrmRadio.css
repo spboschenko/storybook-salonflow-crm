@@ -1,0 +1,252 @@
+/* src/components/CrmRadio/CrmRadio.css */
+
+.crm-radio {
+  font-size: 14px;
+  line-height: 1.5;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.crm-radio-content {
+  flex: 1;
+}
+
+.crm-radio-label {
+  font-weight: 500;
+  color: var(--text-color, #333);
+  margin-bottom: 2px;
+}
+
+.crm-radio-description {
+  font-size: 12px;
+  color: var(--text-color-secondary, #666);
+  line-height: 1.4;
+}
+
+/* Размеры */
+.crm-radio--small {
+  font-size: 12px;
+}
+
+.crm-radio--small .crm-radio-description {
+  font-size: 11px;
+}
+
+.crm-radio--medium {
+  font-size: 14px;
+}
+
+.crm-radio--large {
+  font-size: 16px;
+}
+
+.crm-radio--large .crm-radio-description {
+  font-size: 13px;
+}
+
+/* Варианты */
+.crm-radio--default .ant-radio-inner {
+  border-radius: 50%;
+}
+
+.crm-radio--button {
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+  padding: 12px 16px;
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+  min-height: 48px;
+}
+
+.crm-radio--button:hover {
+  border-color: var(--color-primary, #9370DB);
+  background: rgba(147, 112, 219, 0.05);
+}
+
+.crm-radio--button.ant-radio-wrapper-checked {
+  border-color: var(--color-primary, #9370DB);
+  background: rgba(147, 112, 219, 0.1);
+  box-shadow: 0 0 0 1px rgba(147, 112, 219, 0.2);
+}
+
+.crm-radio--button .ant-radio {
+  margin-top: 2px;
+  margin-right: 12px;
+}
+
+.crm-radio--card {
+  border: 1px solid #d9d9d9;
+  border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  min-height: 56px;
+}
+
+.crm-radio--card:hover {
+  border-color: var(--color-primary, #9370DB);
+  box-shadow: 0 2px 8px rgba(147, 112, 219, 0.15);
+}
+
+.crm-radio--card.ant-radio-wrapper-checked {
+  border-color: var(--color-primary, #9370DB);
+  background: rgba(147, 112, 219, 0.05);
+  box-shadow: 0 2px 8px rgba(147, 112, 219, 0.2);
+}
+
+.crm-radio--card .ant-radio {
+  margin-top: 2px;
+  margin-right: 12px;
+}
+
+/* Группа радиокнопок */
+.crm-radio-group-wrapper {
+  margin-bottom: 16px;
+}
+
+.crm-radio-group-title {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--text-color, #333);
+  margin-bottom: 12px;
+}
+
+.crm-radio-group-required {
+  color: var(--color-error, #ff4d4f);
+  margin-left: 2px;
+}
+
+.crm-radio-group {
+  display: flex;
+  gap: 8px;
+}
+
+.crm-radio-group--vertical {
+  flex-direction: column;
+}
+
+.crm-radio-group--horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.crm-radio-group--vertical .crm-radio {
+  margin-bottom: 8px;
+}
+
+.crm-radio-group--horizontal .crm-radio {
+  margin-bottom: 8px;
+  margin-right: 16px;
+}
+
+/* Группа с кнопками */
+.crm-radio-group--button.crm-radio-group--horizontal {
+  gap: 8px;
+}
+
+.crm-radio-group--button .crm-radio {
+  margin-right: 0;
+  margin-bottom: 0;
+}
+
+/* Группа с карточками */
+.crm-radio-group--card .crm-radio {
+  margin-right: 0;
+}
+
+/* Состояния группы */
+.crm-radio-group--error .crm-radio {
+  border-color: var(--color-error, #ff4d4f);
+}
+
+.crm-radio-group--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.crm-radio-group-error {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-error, #ff4d4f);
+  line-height: 1.4;
+}
+
+.crm-radio-group-helper {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--text-color-secondary, #666);
+  line-height: 1.4;
+}
+
+/* Фокус состояния */
+.crm-radio .ant-radio-input:focus + .ant-radio-inner {
+  border-color: var(--color-primary, #9370DB);
+  box-shadow: 0 0 0 2px rgba(147, 112, 219, 0.1);
+}
+
+/* Отключенное состояние */
+.crm-radio.ant-radio-wrapper-disabled {
+  color: #bfbfbf;
+  cursor: not-allowed;
+}
+
+.crm-radio--button.ant-radio-wrapper-disabled {
+  background: #f5f5f5;
+  border-color: #d9d9d9;
+}
+
+.crm-radio--card.ant-radio-wrapper-disabled {
+  background: #f5f5f5;
+  border-color: #d9d9d9;
+  box-shadow: none;
+}
+
+/* Выбранное состояние */
+.crm-radio .ant-radio-checked .ant-radio-inner {
+  background-color: var(--color-primary, #9370DB);
+  border-color: var(--color-primary, #9370DB);
+}
+
+.crm-radio .ant-radio-checked .ant-radio-inner::after {
+  background-color: #ffffff;
+}
+
+/* Hover эффекты */
+.crm-radio:hover .ant-radio-inner {
+  border-color: var(--color-primary-light, #B19CD9);
+}
+
+.crm-radio:hover .ant-radio-checked .ant-radio-inner {
+  background-color: var(--color-primary-light, #B19CD9);
+  border-color: var(--color-primary-light, #B19CD9);
+}
+
+/* Анимации */
+.crm-radio .ant-radio-inner {
+  transition: all 0.2s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .crm-radio-group--horizontal {
+    flex-direction: column;
+  }
+  
+  .crm-radio-group--horizontal .crm-radio {
+    margin-right: 0;
+  }
+  
+  .crm-radio-group--button.crm-radio-group--horizontal {
+    flex-direction: column;
+  }
+}
