@@ -1,0 +1,65 @@
+/* src/components/SidebarSection/SidebarSection.css */
+
+.sidebar-section {
+  margin-bottom: 8px;
+}
+
+.sidebar-section--collapsed {
+  margin-bottom: 4px;
+}
+
+.sidebar-section__header {
+  padding: 16px 16px 8px 16px;
+  margin-bottom: 4px;
+}
+
+.sidebar-section__title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-color-secondary);
+  display: block;
+}
+
+.sidebar-section__items {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-section__divider {
+  margin: 16px 16px 8px 16px;
+  border-color: var(--border-color-light);
+}
+
+.sidebar-section__divider.ant-divider {
+  margin-top: 16px;
+  margin-bottom: 8px;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+/* Темная тема для секций */
+.sidebar-section--dark .sidebar-section__title {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.sidebar-section--dark .sidebar-section__divider {
+  border-color: rgba(255, 255, 255, 0.12);
+}
+
+/* Специальные стили для главной секции */
+.sidebar-section--primary .sidebar-section__title {
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Компактная секция */
+.sidebar-section--compact .sidebar-section__header {
+  padding: 8px 16px 4px 16px;
+  margin-bottom: 2px;
+}
+
+.sidebar-section--compact .sidebar-section__divider {
+  margin: 8px 16px 4px 16px;
+}

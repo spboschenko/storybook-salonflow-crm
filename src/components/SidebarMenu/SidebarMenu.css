@@ -1,0 +1,228 @@
+/* src/components/SidebarMenu/SidebarMenu.css */
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: white;
+  border-right: 1px solid var(--border-color);
+  transition: width 0.3s ease;
+  width: 280px;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-menu--collapsed {
+  width: 64px;
+}
+
+/* Заголовок */
+.sidebar-menu__header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid var(--border-color-light);
+  min-height: 72px;
+  background-color: var(--color-primary-light);
+}
+
+.sidebar-menu--collapsed .sidebar-menu__header {
+  justify-content: center;
+  padding: 16px 8px;
+}
+
+.sidebar-menu__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--color-primary);
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 12px;
+  flex-shrink: 0;
+}
+
+.sidebar-menu--collapsed .sidebar-menu__logo {
+  margin-right: 0;
+}
+
+.sidebar-menu__company {
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar-menu__company-name {
+  color: var(--color-primary-dark);
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-menu__company-name.ant-typography {
+  color: var(--color-primary-dark);
+  margin-bottom: 0;
+}
+
+.sidebar-menu__collapse-btn {
+  color: var(--color-primary);
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.sidebar-menu__collapse-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Контент */
+.sidebar-menu__content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar-menu__sections {
+  flex: 1;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+
+/* Кастомные скроллбары */
+.sidebar-menu__sections::-webkit-scrollbar {
+  width: 4px;
+}
+
+.sidebar-menu__sections::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.sidebar-menu__sections::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 2px;
+}
+
+.sidebar-menu__sections::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary-light);
+}
+
+/* Информация о пользователе */
+.sidebar-menu__user {
+  border-top: 1px solid var(--border-color-light);
+  padding: 16px;
+  background-color: #fafafa;
+  margin-top: auto;
+}
+
+.sidebar-menu--collapsed .sidebar-menu__user {
+  padding: 16px 8px;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar-menu__user-info {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-menu--collapsed .sidebar-menu__user-info {
+  justify-content: center;
+}
+
+.sidebar-menu__user-avatar {
+  flex-shrink: 0;
+  margin-right: 12px;
+  border: 2px solid var(--color-primary-light);
+}
+
+.sidebar-menu--collapsed .sidebar-menu__user-avatar {
+  margin-right: 0;
+}
+
+.sidebar-menu__user-details {
+  flex: 1;
+  overflow: hidden;
+}
+
+.sidebar-menu__user-name {
+  display: block;
+  font-size: 14px;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar-menu__user-role {
+  display: block;
+  font-size: 12px;
+  color: var(--text-color-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 2px;
+}
+
+/* Темная тема */
+.sidebar-menu--dark {
+  background-color: #001529;
+  border-right-color: #1f1f1f;
+}
+
+.sidebar-menu--dark .sidebar-menu__header {
+  background-color: #0c1424;
+  border-bottom-color: #1f1f1f;
+}
+
+.sidebar-menu--dark .sidebar-menu__company-name {
+  color: white;
+}
+
+.sidebar-menu--dark .sidebar-menu__collapse-btn {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.sidebar-menu--dark .sidebar-menu__collapse-btn:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.sidebar-menu--dark .sidebar-menu__user {
+  background-color: #0c1424;
+  border-top-color: #1f1f1f;
+}
+
+.sidebar-menu--dark .sidebar-menu__user-name {
+  color: white;
+}
+
+.sidebar-menu--dark .sidebar-menu__user-role {
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .sidebar-menu {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar-menu--mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-menu--collapsed {
+    transform: translateX(-100%);
+  }
+}

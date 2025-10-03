@@ -1,0 +1,224 @@
+// src/schemas/index.ts
+import { z } from 'zod';
+
+// =================================================================
+// БАЗОВЫЕ СХЕМЫ И УТИЛИТЫ
+// =================================================================
+
+/**
+ * Схема для полей, генерируемых сервером
+ */
+export const ServerGeneratedFieldsSchema = z.object({
+  id: z.string().min(1, 'ID обязателен'),
+  createdAt: z.date(),
+  updatedAt: z.date(),
+  isArchived: z.boolean().default(false),
+});
+
+/**
+ * Утилита для создания API payload без серверных полей
+ */
+export const createApiPayloadSchema = <T extends z.ZodRawShape>(schema: z.ZodObject<T>) =>
+  schema.omit({ id: true, createdAt: true, updatedAt: true, isArchived: true });
+
+// =================================================================
+// ОСНОВНЫЕ СУЩНОСТИ CRM
+// =================================================================
+
+/**
+ * Схема клиента
+ */
+export const ClientSchema = z.object({
+  // Серверные поля
+  ...ServerGeneratedFieldsSchema.shape,
+  
+  // Основная информация
+  firstName: z.string().min(1, 'Имя обязательно').max(50, 'Имя слишком длинное'),
+  lastName: z.string().min(1, 'Фамилия обязательна').max(50, 'Фамилия слишком длинная'),
+  phone: z.string().regex(/^\+?[1-9]\d{1,14}$/, 'Неверный формат телефона'),
+  email: z.string().email('Неверный формат email').optional(),
+  
+  // Адрес
+  address: z.object({
+    street: z.string().optional(),
+    city: z.string().optional(),
+    postalCode: z.string().optional(),
+    country: z.string().default('RU'),
+  }).optional(),
+  
+  // Дополнительная информация
+  notes: z.string().max(1000, 'Заметки слишком длинные').optional(),
+  avatar: z.string().url('Неверный URL аватара').optional(),
+  
+  // Настройки
+  preferences: z.object({
+    preferredContactMethod: z.enum(['phone', 'email', 'sms']).default('phone'),
+    language: z.string().default('ru'),
+    notifications: z.boolean().default(true),
+  }).optional(),
+});
+
+/**
+ * Схема питомца
+ */
+export const PetSchema = z.object({
+  // Серверные поля
+  ...ServerGeneratedFieldsSchema.shape,
+  
+  // Связь с клиентом
+  clientId: z.string().min(1, 'ID клиента обязателен'),
+  
+  // Основная информация
+  name: z.string().min(1, 'Кличка обязательна').max(50, 'Кличка слишком длинная'),
+  breed: z.string().min(1, 'Порода обязательна').max(100, 'Название породы слишком длинное'),
+  species: z.enum(['dog', 'cat', 'rabbit', 'bird', 'other']),
+  
+  // Физические характеристики
+  size: z.enum(['XS', 'S', 'M', 'L', 'XL']),
+  weight: z.number().positive('Вес должен быть положительным числом').optional(),
+  age: z.number().int().min(0, 'Возраст не может быть отрицательным').max(50, 'Нереальный возраст').optional(),
+  
+  // Внешний вид
+  color: z.string().max(100, 'Описание окраса слишком длинное').optional(),
+  photos: z.array(z.string().url('Неверный URL фото')).default([]),
+  
+  // Медицинская информация
+  medicalInfo: z.object({
+    allergies: z.array(z.string()).default([]),
+    medications: z.array(z.string()).default([]),
+    specialConditions: z.string().max(500, 'Описание состояния слишком длинное').optional(),
+    lastVetVisit: z.date().optional(),
+    nextVetVisit: z.date().optional(),
+  }).optional(),
+  
+  // Поведенческие особенности
+  behaviorNotes: z.string().max(500, 'Заметки о поведении слишком длинные').optional(),
+  temperament: z.enum(['calm', 'active', 'aggressive', 'shy', 'friendly']).optional(),
+});
+
+/**
+ * Схема услуги
+ */
+export const ServiceSchema = z.object({
+  // Серверные поля
+  ...ServerGeneratedFieldsSchema.shape,
+  
+  // Основная информация
+  name: z.string().min(1, 'Название услуги обязательно').max(100, 'Название слишком длинное'),
+  description: z.string().max(500, 'Описание слишком длинное').optional(),
+  
+  // Цена и время
+  price: z.number().positive('Цена должна быть положительной'),
+  duration: z.number().int().positive('Длительность должна быть положительной'), // в минутах
+  
+  // Категория и тип
+  category: z.enum(['grooming', 'bathing', 'nails', 'teeth', 'spa', 'medical', 'other']),
+  
+  // Для каких животных подходит
+  applicableSpecies: z.array(z.enum(['dog', 'cat', 'rabbit', 'bird', 'other'])).min(1, 'Выберите хотя бы один тип животных'),
+  applicableSizes: z.array(z.enum(['XS', 'S', 'M', 'L', 'XL'])).min(1, 'Выберите хотя бы один размер'),
+  
+  // Дополнительные параметры
+  requiresSpecialEquipment: z.boolean().default(false),
+  maxPetsPerSession: z.number().int().positive().default(1),
+  
+  // Настройки
+  isActive: z.boolean().default(true),
+  bookingAdvanceHours: z.number().int().min(1, 'Минимум 1 час заблаговременно').default(24),
+});
+
+/**
+ * Схема записи на прием
+ */
+export const AppointmentSchema = z.object({
+  // Серверные поля
+  ...ServerGeneratedFieldsSchema.shape,
+  
+  // Основная информация
+  clientId: z.string().min(1, 'ID клиента обязателен'),
+  petId: z.string().min(1, 'ID питомца обязателен'),
+  serviceIds: z.array(z.string().min(1)).min(1, 'Выберите хотя бы одну услугу'),
+  
+  // Время и дата
+  scheduledAt: z.date(),
+  estimatedDuration: z.number().int().positive('Длительность должна быть положительной'), // в минутах
+  
+  // Статус
+  status: z.enum(['scheduled', 'confirmed', 'in-progress', 'completed', 'cancelled', 'no-show']).default('scheduled'),
+  
+  // Дополнительная информация
+  notes: z.string().max(1000, 'Заметки слишком длинные').optional(),
+  specialRequests: z.string().max(500, 'Особые пожелания слишком длинные').optional(),
+  
+  // Цена
+  totalPrice: z.number().positive('Общая стоимость должна быть положительной'),
+  
+  // Повторяющиеся записи
+  repeatInfo: z.object({
+    type: z.enum(['does-not-repeat', 'repeat-on-rules', 'repeat-on-selected-days']),
+    frequency: z.number().int().positive().optional(),
+    unit: z.enum(['days', 'weeks', 'months']).optional(),
+    ends: z.object({
+      onDate: z.date().optional(),
+      afterOccurrences: z.number().int().positive().optional(),
+    }).optional(),
+  }).optional(),
+});
+
+/**
+ * Схема отчета по визиту
+ */
+export const ReportSchema = z.object({
+  // Серверные поля
+  ...ServerGeneratedFieldsSchema.shape,
+  
+  // Связь с записью
+  appointmentId: z.string().min(1, 'ID записи обязателен'),
+  
+  // Информация о выполненных услугах
+  notes: z.string().max(2000, 'Заметки слишком длинные'),
+  price: z.number().positive('Цена должна быть положительной'),
+  photos: z.array(z.string().url('Неверный URL фото')).default([]),
+  
+  // Дополнительные рекомендации
+  recommendations: z.string().max(1000, 'Рекомендации слишком длинные').optional(),
+  nextVisitRecommended: z.date().optional(),
+});
+
+// =================================================================
+// API PAYLOAD ТИПЫ
+// =================================================================
+
+export const ClientApiPayloadSchema = createApiPayloadSchema(ClientSchema);
+export const PetApiPayloadSchema = createApiPayloadSchema(PetSchema);
+export const ServiceApiPayloadSchema = createApiPayloadSchema(ServiceSchema);
+export const AppointmentApiPayloadSchema = createApiPayloadSchema(AppointmentSchema);
+export const ReportApiPayloadSchema = createApiPayloadSchema(ReportSchema);
+
+// =================================================================
+// TYPESCRIPT ТИПЫ
+// =================================================================
+
+export type Client = z.infer<typeof ClientSchema>;
+export type Pet = z.infer<typeof PetSchema>;
+export type Service = z.infer<typeof ServiceSchema>;
+export type Appointment = z.infer<typeof AppointmentSchema>;
+export type Report = z.infer<typeof ReportSchema>;
+
+export type ClientApiPayload = z.infer<typeof ClientApiPayloadSchema>;
+export type PetApiPayload = z.infer<typeof PetApiPayloadSchema>;
+export type ServiceApiPayload = z.infer<typeof ServiceApiPayloadSchema>;
+export type AppointmentApiPayload = z.infer<typeof AppointmentApiPayloadSchema>;
+export type ReportApiPayload = z.infer<typeof ReportApiPayloadSchema>;
+
+// =================================================================
+// ДОПОЛНИТЕЛЬНЫЕ ТИПЫ
+// =================================================================
+
+export type PetSize = 'XS' | 'S' | 'M' | 'L' | 'XL';
+export type PetSpecies = 'dog' | 'cat' | 'rabbit' | 'bird' | 'other';
+export type ServiceCategory = 'grooming' | 'bathing' | 'nails' | 'teeth' | 'spa' | 'medical' | 'other';
+export type AppointmentStatus = 'scheduled' | 'confirmed' | 'in-progress' | 'completed' | 'cancelled' | 'no-show';
+export type RepeatType = 'does-not-repeat' | 'repeat-on-rules' | 'repeat-on-selected-days';
+export type ContactMethod = 'phone' | 'email' | 'sms';
+export type PetTemperament = 'calm' | 'active' | 'aggressive' | 'shy' | 'friendly';
