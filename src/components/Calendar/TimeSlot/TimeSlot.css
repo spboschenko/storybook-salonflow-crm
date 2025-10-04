@@ -1,0 +1,129 @@
+/* src/components/Calendar/TimeSlot/TimeSlot.css */
+
+.crm-time-slot {
+  position: relative;
+  border: 1px solid #f0f0f0;
+  border-top: none;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+}
+
+.crm-time-slot:first-child {
+  border-top: 1px solid #f0f0f0;
+}
+
+.crm-time-slot:hover {
+  background: #f5f5f5;
+  border-color: #d9d9d9;
+}
+
+/* Размеры */
+.crm-time-slot--compact {
+  font-size: 10px;
+  padding: 2px;
+}
+
+.crm-time-slot--standard {
+  font-size: 12px;
+  padding: 4px;
+}
+
+.crm-time-slot--comfortable {
+  font-size: 14px;
+  padding: 6px;
+}
+
+/* Состояния */
+.crm-time-slot--selected {
+  background: #e6f7ff;
+  border-color: #1890ff;
+  color: #1890ff;
+}
+
+.crm-time-slot--non-working {
+  background: #f5f5f5;
+  color: #bfbfbf;
+  cursor: not-allowed;
+}
+
+.crm-time-slot--non-working:hover {
+  background: #f5f5f5;
+  border-color: #f0f0f0;
+}
+
+.crm-time-slot--unavailable {
+  background: #fff2f0;
+  border-color: #ffccc7;
+  color: #ff4d4f;
+  cursor: not-allowed;
+}
+
+.crm-time-slot--unavailable:hover {
+  background: #fff2f0;
+  border-color: #ffccc7;
+}
+
+/* Время */
+.crm-time-slot__time {
+  font-size: inherit;
+  font-weight: 500;
+}
+
+/* Индикатор */
+.crm-time-slot__indicator {
+  position: absolute;
+  left: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 20%;
+  background: transparent;
+  border-radius: 1px;
+  transition: all 0.2s ease;
+}
+
+.crm-time-slot--selected .crm-time-slot__indicator {
+  background: #1890ff;
+}
+
+.crm-time-slot--unavailable .crm-time-slot__indicator {
+  background: #ff4d4f;
+}
+
+/* Особые интервалы */
+.crm-time-slot--quarter-hour {
+  min-height: 15px;
+}
+
+.crm-time-slot--half-hour {
+  min-height: 30px;
+}
+
+.crm-time-slot--hour {
+  min-height: 60px;
+  border-bottom: 2px solid #d9d9d9;
+}
+
+/* Анимации */
+.crm-time-slot--dragging-over {
+  background: rgba(24, 144, 255, 0.1);
+  border-color: #1890ff;
+  border-style: dashed;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .crm-time-slot {
+    font-size: 10px;
+    padding: 2px;
+  }
+  
+  .crm-time-slot__indicator {
+    width: 2px;
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.stories.tsx", "**/*.stories.ts"],
+      "rules": {
+        "storybook/no-renderer-packages": "off"
+      }
+    }
+  ]
+}

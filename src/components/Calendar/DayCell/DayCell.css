@@ -1,0 +1,302 @@
+/* src/components/Calendar/DayCell/DayCell.css */
+
+.crm-day-cell {
+  position: relative;
+  border: 1px solid #f0f0f0;
+  background: #fff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.crm-day-cell:hover {
+  border-color: #d9d9d9;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.crm-day-cell:hover .crm-day-cell__quick-add {
+  opacity: 1;
+}
+
+/* Состояния */
+.crm-day-cell--selected {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.crm-day-cell--today {
+  background: #f6ffed;
+  border-color: #52c41a;
+}
+
+.crm-day-cell--today .crm-day-cell__date--today {
+  color: #52c41a;
+  background: #52c41a;
+  color: #fff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.crm-day-cell--other-month {
+  background: #fafafa;
+  color: #bfbfbf;
+}
+
+.crm-day-cell--other-month .crm-day-cell__date {
+  color: #bfbfbf;
+}
+
+.crm-day-cell--weekend {
+  background: #fafafa;
+}
+
+.crm-day-cell--weekend .crm-day-cell__date {
+  color: #ff4d4f;
+}
+
+/* Заголовок */
+.crm-day-cell__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 8px 4px;
+  border-bottom: 1px solid #f5f5f5;
+  min-height: 32px;
+}
+
+.crm-day-cell__date {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.crm-day-cell__count {
+  flex-shrink: 0;
+}
+
+/* Содержимое */
+.crm-day-cell__content {
+  flex: 1;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.crm-day-cell__appointments {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.crm-day-cell__appointment {
+  padding: 2px 6px;
+  background: #f9f9f9;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-height: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.crm-day-cell__appointment:hover {
+  background: #e6f7ff;
+  transform: translateX(2px);
+}
+
+.crm-day-cell__appointment-content {
+  width: 100%;
+  min-width: 0;
+}
+
+.crm-day-cell__appointment-time {
+  font-size: 10px;
+  flex-shrink: 0;
+  min-width: 32px;
+}
+
+.crm-day-cell__appointment-client {
+  font-size: 11px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Показать еще */
+.crm-day-cell__show-more {
+  padding: 2px 6px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: background-color 0.2s ease;
+}
+
+.crm-day-cell__show-more:hover {
+  background: #f0f0f0;
+}
+
+.crm-day-cell__show-more-text {
+  font-size: 10px;
+  color: #666;
+}
+
+/* Кнопка добавления */
+.crm-day-cell__add-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  border: 1px dashed #d9d9d9;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #999;
+}
+
+.crm-day-cell__add-button:hover {
+  border-color: #1890ff;
+  color: #1890ff;
+  background: #f6ffed;
+}
+
+.crm-day-cell__add-icon {
+  font-size: 14px;
+}
+
+/* Быстрое добавление */
+.crm-day-cell__quick-add {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background: #1890ff;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  font-size: 10px;
+  z-index: 1;
+}
+
+.crm-day-cell__quick-add:hover {
+  background: #40a9ff;
+  transform: scale(1.1);
+}
+
+/* Размеры */
+.crm-day-cell--compact {
+  font-size: 12px;
+}
+
+.crm-day-cell--compact .crm-day-cell__header {
+  padding: 4px 6px 2px;
+  min-height: 24px;
+}
+
+.crm-day-cell--compact .crm-day-cell__date {
+  font-size: 12px;
+}
+
+.crm-day-cell--compact .crm-day-cell__content {
+  padding: 2px;
+  gap: 1px;
+}
+
+.crm-day-cell--compact .crm-day-cell__appointment {
+  padding: 1px 4px;
+  min-height: 16px;
+}
+
+.crm-day-cell--compact .crm-day-cell__appointment-time {
+  font-size: 9px;
+  min-width: 28px;
+}
+
+.crm-day-cell--compact .crm-day-cell__appointment-client {
+  font-size: 9px;
+}
+
+.crm-day-cell--standard .crm-day-cell__header {
+  padding: 6px 8px 4px;
+  min-height: 32px;
+}
+
+.crm-day-cell--comfortable {
+  font-size: 14px;
+}
+
+.crm-day-cell--comfortable .crm-day-cell__header {
+  padding: 8px 10px 6px;
+  min-height: 36px;
+}
+
+.crm-day-cell--comfortable .crm-day-cell__date {
+  font-size: 16px;
+}
+
+.crm-day-cell--comfortable .crm-day-cell__content {
+  padding: 6px;
+  gap: 3px;
+}
+
+.crm-day-cell--comfortable .crm-day-cell__appointment {
+  padding: 3px 8px;
+  min-height: 24px;
+}
+
+.crm-day-cell--comfortable .crm-day-cell__appointment-time {
+  font-size: 11px;
+  min-width: 36px;
+}
+
+.crm-day-cell--comfortable .crm-day-cell__appointment-client {
+  font-size: 12px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .crm-day-cell {
+    font-size: 11px;
+  }
+  
+  .crm-day-cell__header {
+    padding: 4px !important;
+    min-height: 24px !important;
+  }
+  
+  .crm-day-cell__date {
+    font-size: 11px !important;
+  }
+  
+  .crm-day-cell__content {
+    padding: 2px !important;
+    gap: 1px !important;
+  }
+  
+  .crm-day-cell__appointment {
+    padding: 1px 3px !important;
+    min-height: 14px !important;
+  }
+  
+  .crm-day-cell__appointment-time {
+    font-size: 8px !important;
+    min-width: 24px !important;
+  }
+  
+  .crm-day-cell__appointment-client {
+    font-size: 8px !important;
+  }
+}

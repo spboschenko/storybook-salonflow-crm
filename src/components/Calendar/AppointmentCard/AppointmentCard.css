@@ -1,0 +1,138 @@
+/* src/components/Calendar/AppointmentCard/AppointmentCard.css */
+
+.crm-appointment-card {
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.crm-appointment-card:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.crm-appointment-card--selected {
+  border: 2px solid #1890ff !important;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.crm-appointment-card[draggable="true"] {
+  cursor: move;
+}
+
+.crm-appointment-card[draggable="true"]:hover {
+  cursor: grab;
+}
+
+.crm-appointment-card[draggable="true"]:active {
+  cursor: grabbing;
+}
+
+/* Размеры */
+.crm-appointment-card--compact {
+  font-size: 12px;
+}
+
+.crm-appointment-card--compact .ant-card-body {
+  padding: 6px !important;
+}
+
+.crm-appointment-card--standard {
+  font-size: 14px;
+}
+
+.crm-appointment-card--comfortable {
+  font-size: 14px;
+}
+
+.crm-appointment-card--comfortable .ant-card-body {
+  padding: 16px !important;
+}
+
+/* Содержимое */
+.crm-appointment-card__content {
+  width: 100%;
+}
+
+.crm-appointment-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 4px;
+}
+
+.crm-appointment-card__header .ant-space-item:first-child {
+  flex: 1;
+  min-width: 0;
+}
+
+.crm-appointment-card__pet {
+  margin-bottom: 4px;
+}
+
+.crm-appointment-card__service {
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.crm-appointment-card__time {
+  margin-bottom: 8px;
+  color: #666;
+}
+
+.crm-appointment-card__details {
+  border-top: 1px solid #f0f0f0;
+  padding-top: 8px;
+  margin-top: 8px;
+}
+
+.crm-appointment-card__reminder {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  font-size: 10px;
+}
+
+/* Компактный режим */
+.crm-appointment-card--compact .crm-appointment-card__header {
+  margin-bottom: 2px;
+}
+
+.crm-appointment-card--compact .crm-appointment-card__pet,
+.crm-appointment-card--compact .crm-appointment-card__service,
+.crm-appointment-card--compact .crm-appointment-card__time {
+  margin-bottom: 2px;
+}
+
+.crm-appointment-card--compact .crm-appointment-card__details {
+  display: none;
+}
+
+/* Статусы */
+.crm-appointment-card__header .ant-tag {
+  margin: 0;
+  font-size: 10px;
+  padding: 0 4px;
+  line-height: 16px;
+}
+
+/* Анимации drag & drop */
+.crm-appointment-card--dragging {
+  opacity: 0.5;
+  transform: rotate(5deg);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .crm-appointment-card {
+    font-size: 12px;
+  }
+  
+  .crm-appointment-card .ant-card-body {
+    padding: 8px !important;
+  }
+  
+  .crm-appointment-card__details {
+    margin-top: 4px;
+    padding-top: 4px;
+  }
+}

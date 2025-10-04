@@ -1,0 +1,181 @@
+/* src/components/TimeSlot/TimeSlot.css */
+
+.time-slot {
+  position: relative;
+  border-bottom: 1px solid #f0f0f0;
+  border-right: 1px solid #f0f0f0;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Рабочие часы */
+.time-slot--working {
+  background: #ffffff;
+}
+
+.time-slot--working:not(.time-slot--unavailable):hover {
+  background: #f8f9ff;
+}
+
+/* Нерабочие часы */
+.time-slot:not(.time-slot--working) {
+  background: #fafafa;
+  border-bottom-color: #e8e8e8;
+}
+
+/* Доступность */
+.time-slot--available {
+  cursor: pointer;
+}
+
+.time-slot--unavailable {
+  background: #f5f5f5;
+  cursor: not-allowed;
+}
+
+.time-slot--unavailable .time-slot-content {
+  opacity: 0.5;
+}
+
+/* Состояния */
+.time-slot--selected {
+  background: #e6f7ff;
+  border-color: #91d5ff;
+}
+
+.time-slot--focused {
+  outline: 2px solid var(--color-primary, #9370DB);
+  outline-offset: -2px;
+}
+
+.time-slot--clickable:hover {
+  background: #f0f8ff;
+}
+
+/* Размеры */
+.time-slot--compact {
+  font-size: 11px;
+}
+
+.time-slot--compact .time-slot-time {
+  font-size: 10px;
+  padding: 2px 4px;
+}
+
+.time-slot--standard {
+  font-size: 12px;
+}
+
+.time-slot--standard .time-slot-time {
+  font-size: 11px;
+  padding: 3px 6px;
+}
+
+.time-slot--comfortable {
+  font-size: 13px;
+}
+
+.time-slot--comfortable .time-slot-time {
+  font-size: 12px;
+  padding: 4px 8px;
+}
+
+/* Время в слоте */
+.time-slot-time {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.05);
+  color: #666;
+  font-weight: 500;
+  line-height: 1;
+  border-radius: 0 0 4px 0;
+  font-family: 'Roboto Mono', monospace;
+  z-index: 1;
+}
+
+/* Контент слота */
+.time-slot-content {
+  flex: 1;
+  position: relative;
+  padding: 2px;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+/* Overlay для недоступных слотов */
+.time-slot-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.time-slot-unavailable-text {
+  font-size: 11px;
+  color: #999;
+  font-weight: 500;
+}
+
+/* Анимации */
+.time-slot {
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.time-slot-content > * {
+  transition: opacity 0.2s ease;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .time-slot {
+    border-right: none;
+  }
+  
+  .time-slot-time {
+    display: none;
+  }
+}
+
+/* Состояния для drag & drop */
+.time-slot--drop-target {
+  background: #f6ffed;
+  border-color: #b7eb8f;
+}
+
+.time-slot--drop-active {
+  background: #e6fffb;
+  border-color: #87e8de;
+}
+
+.time-slot--drop-invalid {
+  background: #fff2e8;
+  border-color: #ffbb96;
+}
+
+/* Фокус для доступности */
+.time-slot:focus {
+  outline: 2px solid var(--color-primary, #9370DB);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+/* Первый и последний слоты */
+.time-slot:first-child {
+  border-top: 1px solid #f0f0f0;
+}
+
+.time-slot:last-child {
+  border-bottom: 2px solid #d9d9d9;
+}

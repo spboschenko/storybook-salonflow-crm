@@ -1,0 +1,192 @@
+/* src/components/Calendar/EmployeeColumn/EmployeeColumn.css */
+
+.crm-employee-column {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
+}
+
+.crm-employee-column:hover {
+  border-color: #d9d9d9;
+}
+
+/* Заголовок */
+.crm-employee-column__header {
+  display: flex;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+  gap: 8px;
+  min-height: 60px;
+}
+
+.crm-employee-column__avatar {
+  flex-shrink: 0;
+}
+
+.crm-employee-column__info {
+  flex: 1;
+  min-width: 0;
+  position: relative;
+}
+
+.crm-employee-column__name {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.crm-employee-column__position {
+  display: block;
+  font-size: 12px;
+}
+
+.crm-employee-column__appointment-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+}
+
+/* Контент */
+.crm-employee-column__content {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.crm-employee-column__appointments {
+  position: relative;
+  height: 100%;
+  min-height: 400px;
+}
+
+.crm-employee-column__appointment-wrapper {
+  position: absolute;
+  left: 4px;
+  right: 4px;
+  z-index: 1;
+}
+
+.crm-employee-column__drop-zone {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.crm-employee-column__drop-zone.dragover {
+  background: rgba(24, 144, 255, 0.1);
+  border: 2px dashed #1890ff;
+}
+
+/* Размеры */
+.crm-employee-column--compact .crm-employee-column__header {
+  padding: 8px;
+  min-height: 48px;
+}
+
+.crm-employee-column--compact .crm-employee-column__name {
+  font-size: 12px;
+}
+
+.crm-employee-column--compact .crm-employee-column__position {
+  font-size: 10px;
+}
+
+.crm-employee-column--standard .crm-employee-column__header {
+  padding: 12px;
+  min-height: 60px;
+}
+
+.crm-employee-column--comfortable .crm-employee-column__header {
+  padding: 16px;
+  min-height: 72px;
+}
+
+.crm-employee-column--comfortable .crm-employee-column__name {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.crm-employee-column--comfortable .crm-employee-column__position {
+  font-size: 14px;
+}
+
+/* Состояния */
+.crm-employee-column--selected {
+  border-color: #1890ff;
+  box-shadow: 0 0 0 2px rgba(24, 144, 255, 0.2);
+}
+
+.crm-employee-column--inactive .crm-employee-column__header {
+  background: #f5f5f5;
+  opacity: 0.6;
+}
+
+.crm-employee-column--inactive .crm-employee-column__name {
+  color: #999;
+}
+
+/* Индикатор рабочего статуса */
+.crm-employee-column__header .ant-badge {
+  position: relative;
+}
+
+.crm-employee-column__header .ant-badge .ant-badge-status-dot {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+}
+
+/* Анимации */
+.crm-employee-column__appointment-wrapper {
+  transition: all 0.2s ease;
+}
+
+.crm-employee-column__appointment-wrapper:hover {
+  z-index: 2;
+}
+
+/* Сетка времени (опционально) */
+.crm-employee-column--with-grid .crm-employee-column__content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 59px,
+    #f0f0f0 59px,
+    #f0f0f0 60px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .crm-employee-column {
+    min-width: 150px;
+  }
+  
+  .crm-employee-column__header {
+    padding: 8px !important;
+    min-height: 48px !important;
+  }
+  
+  .crm-employee-column__name {
+    font-size: 12px !important;
+  }
+  
+  .crm-employee-column__position {
+    font-size: 10px !important;
+  }
+}

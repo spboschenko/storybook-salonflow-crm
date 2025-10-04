@@ -1,0 +1,136 @@
+/* src/components/Calendar/TimeScale/TimeScale.css */
+
+.crm-time-scale {
+  display: flex;
+  flex-direction: column;
+  background: #fafafa;
+  border-right: 1px solid #f0f0f0;
+  user-select: none;
+}
+
+/* Слоты времени */
+.crm-time-scale__slot {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 0 8px;
+  border-bottom: 1px solid #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.crm-time-scale__slot:hover {
+  background: #f0f0f0;
+}
+
+.crm-time-scale__slot--major {
+  border-bottom: 1px solid #d9d9d9;
+}
+
+.crm-time-scale__slot--minor {
+  border-bottom: 1px solid #f5f5f5;
+}
+
+/* Время */
+.crm-time-scale__time {
+  position: relative;
+  top: -8px;
+  left: 0;
+}
+
+.crm-time-scale__label {
+  font-size: 12px;
+  color: #666;
+  font-weight: 400;
+  white-space: nowrap;
+}
+
+.crm-time-scale__label--major {
+  font-weight: 500;
+  color: #333;
+  font-size: 13px;
+}
+
+.crm-time-scale__label--minor {
+  font-weight: 400;
+  color: #999;
+  font-size: 11px;
+}
+
+/* Линии */
+.crm-time-scale__line {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 1px;
+}
+
+.crm-time-scale__line--major {
+  background: #d9d9d9;
+  height: 2px;
+}
+
+.crm-time-scale__line--minor {
+  background: #f0f0f0;
+  height: 1px;
+}
+
+/* Размеры */
+.crm-time-scale--compact {
+  min-width: 50px;
+  padding: 0 4px;
+}
+
+.crm-time-scale--compact .crm-time-scale__slot {
+  padding: 0 4px;
+}
+
+.crm-time-scale--compact .crm-time-scale__label {
+  font-size: 10px;
+}
+
+.crm-time-scale--compact .crm-time-scale__label--major {
+  font-size: 11px;
+}
+
+.crm-time-scale--standard {
+  min-width: 60px;
+  padding: 0 8px;
+}
+
+.crm-time-scale--comfortable {
+  min-width: 80px;
+  padding: 0 12px;
+}
+
+.crm-time-scale--comfortable .crm-time-scale__slot {
+  padding: 0 12px;
+}
+
+.crm-time-scale--comfortable .crm-time-scale__label {
+  font-size: 13px;
+}
+
+.crm-time-scale--comfortable .crm-time-scale__label--major {
+  font-size: 14px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .crm-time-scale {
+    min-width: 45px !important;
+  }
+  
+  .crm-time-scale__slot {
+    padding: 0 4px !important;
+  }
+  
+  .crm-time-scale__label {
+    font-size: 10px !important;
+  }
+  
+  .crm-time-scale__label--major {
+    font-size: 11px !important;
+  }
+}

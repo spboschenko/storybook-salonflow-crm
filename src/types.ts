@@ -47,6 +47,50 @@ export enum RepeatType {
 
 export type PetSize = 'XS' | 'S' | 'M' | 'L' | 'XL';
 
+/**
+ * Размеры календаря для адаптивности
+ */
+export type CalendarSize = 'small' | 'medium' | 'large';
+
+/**
+ * Виды календаря
+ */
+export type CalendarView = 'month' | 'week' | 'day' | 'agenda';
+
+/**
+ * Приоритеты записей
+ */
+export enum AppointmentPriority {
+  Low = 'low',
+  Normal = 'normal',
+  High = 'high',
+  Urgent = 'urgent',
+}
+
+/**
+ * Сотрудник
+ */
+export interface Employee extends ServerGeneratedEntity {
+  firstName: string;
+  lastName: string;
+  email: string;
+  position: string;
+  isActive: boolean;
+  workingHours: Record<string, { start: string; end: string }>;
+  color?: string;
+}
+
+/**
+ * Временной слот
+ */
+export interface TimeSlot {
+  id: string;
+  start: Date;
+  end: Date;
+  isBooked: boolean;
+  employeeId?: string;
+}
+
 export enum ServiceType {
   GROOMING = 'grooming',
   BOARDING = 'BOARDING',
@@ -59,6 +103,7 @@ export enum AppointmentStatus {
   Pending = 'pending',                 // Онлайн-запрос (до одобрения сотрудником)
   Unconfirmed = 'unconfirmed',         // Одобрена, но нет подтверждения от клиента/сотрудника
   Confirmed = 'confirmed',             // Подтверждена (готовность к визиту)
+  Scheduled = 'scheduled',             // Запланирована
   // Статусы после Check-in
   CheckedIn = 'checked-in',            // Клиент прибыл, услуга в процессе
   ReadyForPickup = 'ready-for-pickup', // Услуга завершена, питомец ждет выдачи
@@ -92,6 +137,8 @@ export enum InteractionType {
  */
 export interface Client extends ServerGeneratedEntity {
   name: string;
+  firstName: string; // Обязательное поле
+  lastName: string;  // Обязательное поле
   email: string;
   phone: string;
   address: string;
@@ -129,6 +176,7 @@ export interface Service extends ServerGeneratedEntity {
   type: ServiceType;
   applicablePetTypes: ('dog' | 'cat')[];
   taxable: boolean; // Важно для финансового отчета
+  color?: string; // Цвет для календаря
 }
 
 /**
@@ -174,6 +222,30 @@ export interface RepeatInfo {
 }
 
 /**
+ * Сотрудник
+ */
+export interface Employee extends ServerGeneratedEntity {
+  firstName: string;
+  lastName: string;
+  email: string;
+  position: string;
+  isActive: boolean;
+  workingHours: Record<string, { start: string; end: string }>;
+  color?: string;
+}
+
+/**
+ * Временной слот
+ */
+export interface TimeSlot {
+  id: string;
+  start: Date;
+  end: Date;
+  isBooked: boolean;
+  employeeId?: string;
+}
+
+/**
  * Отчет по визиту (Report)
  */
 export interface Report extends ServerGeneratedEntity {
@@ -203,7 +275,24 @@ export interface Settings {
 // 4. ВСПОМОГАТЕЛЬНЫЕ И СЛОЖНЫЕ ТИПЫ
 // =================================================================
 
-
+/**
+ * Запись с предзагруженными связанными данными
+ */
+export interface AppointmentWithRelations extends Appointment {
+  client?: Client;
+  pets?: Pet[];
+  pet?: Pet; // Для обратной совместимости
+  services?: Service[];
+  service?: Service; // Для обратной совместимости
+  staff?: any[]; // Здесь можно добавить интерфейс Staff когда появится
+  priority?: AppointmentPriority;
+  employee?: { color?: string };
+  employees?: { color?: string }[];
+  price?: number;
+  travelTime?: number;
+  notes?: string;
+  reminderSent?: boolean;
+}
 
 /**
  * История взаимодействий (звонки, email)

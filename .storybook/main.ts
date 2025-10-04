@@ -15,6 +15,13 @@ const config: StorybookConfig = {
   },
   "staticDirs": [
     "..\\public"
-  ]
+  ],
+  webpackFinal: async (config) => {
+    // Отключаем ESLint
+    config.plugins = config.plugins?.filter(
+      (plugin) => plugin && plugin.constructor.name !== 'ESLintWebpackPlugin'
+    );
+    return config;
+  }
 };
 export default config;

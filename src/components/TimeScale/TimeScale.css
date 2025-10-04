@@ -1,0 +1,227 @@
+/* src/components/TimeScale/TimeScale.css */
+
+.time-scale {
+  background: #fafafa;
+  border-right: 1px solid #e8e8e8;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  user-select: none;
+}
+
+/* Размеры */
+.time-scale--compact {
+  font-size: 10px;
+}
+
+.time-scale--standard {
+  font-size: 11px;
+}
+
+.time-scale--comfortable {
+  font-size: 12px;
+}
+
+/* Клики */
+.time-scale--clickable .time-scale-slot {
+  cursor: pointer;
+}
+
+.time-scale--clickable .time-scale-slot:hover {
+  background: #f0f8ff;
+}
+
+/* Слоты времени */
+.time-scale-slot {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+  border-bottom: 1px solid #f0f0f0;
+  transition: background-color 0.2s ease;
+}
+
+/* Основные часы (00, 01, 02...) */
+.time-scale-slot--major {
+  border-bottom-color: #d9d9d9;
+}
+
+.time-scale-slot--major .time-scale-label {
+  font-weight: 600;
+  color: #262626;
+}
+
+.time-scale-slot--major .time-scale-line {
+  border-top: 2px solid #d9d9d9;
+}
+
+/* Полчаса (30 минут) */
+.time-scale-slot--half {
+  border-bottom-color: #e8e8e8;
+}
+
+.time-scale-slot--half .time-scale-label {
+  font-weight: 500;
+  color: #595959;
+}
+
+.time-scale-slot--half .time-scale-line {
+  border-top: 1px solid #e8e8e8;
+}
+
+/* Четверть часа (15, 45 минут) */
+.time-scale-slot--quarter .time-scale-label {
+  font-weight: normal;
+  color: #8c8c8c;
+}
+
+.time-scale-slot--quarter .time-scale-line {
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Метки времени */
+.time-scale-label {
+  position: absolute;
+  top: -8px;
+  left: 8px;
+  right: 8px;
+  text-align: right;
+  line-height: 1;
+  font-family: 'Roboto Mono', monospace;
+  padding: 2px 4px;
+  background: #fafafa;
+  z-index: 1;
+}
+
+/* Компактный размер - метки времени */
+.time-scale--compact .time-scale-label {
+  top: -7px;
+  left: 4px;
+  right: 4px;
+  padding: 1px 2px;
+  font-size: 9px;
+}
+
+/* Комфортный размер - метки времени */
+.time-scale--comfortable .time-scale-label {
+  top: -9px;
+  left: 12px;
+  right: 12px;
+  padding: 3px 6px;
+  font-size: 12px;
+}
+
+/* Линии времени */
+.time-scale-line {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 0;
+  border-top: 1px solid #f0f0f0;
+}
+
+/* Режим "только основные часы" */
+.time-scale--major-only .time-scale-slot {
+  justify-content: center;
+}
+
+.time-scale--major-only .time-scale-label {
+  position: static;
+  background: transparent;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #262626;
+}
+
+.time-scale--major-only .time-scale-line {
+  width: 100%;
+  right: 0;
+  border-top-width: 2px;
+  border-color: #d9d9d9;
+}
+
+/* Первый и последний слоты */
+.time-scale-slot:first-child {
+  border-top: 1px solid #e8e8e8;
+}
+
+.time-scale-slot:last-child {
+  border-bottom: 2px solid #d9d9d9;
+}
+
+/* Текущее время (если нужно будет добавить) */
+.time-scale-slot--current {
+  background: #f6ffed;
+}
+
+.time-scale-slot--current .time-scale-label {
+  color: #52c41a;
+  font-weight: 600;
+}
+
+.time-scale-slot--current .time-scale-line {
+  border-color: #52c41a;
+}
+
+/* Фокус для доступности */
+.time-scale-slot:focus {
+  outline: 2px solid var(--color-primary, #9370DB);
+  outline-offset: -2px;
+  z-index: 1;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .time-scale {
+    width: 60px !important;
+    min-width: 60px !important;
+  }
+  
+  .time-scale-label {
+    font-size: 9px;
+    left: 2px;
+    right: 2px;
+  }
+  
+  .time-scale-line {
+    width: 15px;
+  }
+}
+
+/* Анимации */
+.time-scale-slot {
+  transition: background-color 0.2s ease;
+}
+
+/* Темная тема (если потребуется) */
+.time-scale--dark {
+  background: #1f1f1f;
+  border-right-color: #303030;
+}
+
+.time-scale--dark .time-scale-slot {
+  border-bottom-color: #303030;
+}
+
+.time-scale--dark .time-scale-slot--major {
+  border-bottom-color: #434343;
+}
+
+.time-scale--dark .time-scale-label {
+  background: #1f1f1f;
+  color: #ffffff;
+}
+
+.time-scale--dark .time-scale-slot--major .time-scale-label {
+  color: #ffffff;
+}
+
+.time-scale--dark .time-scale-slot--half .time-scale-label {
+  color: #bfbfbf;
+}
+
+.time-scale--dark .time-scale-slot--quarter .time-scale-label {
+  color: #8c8c8c;
+}
