@@ -18,22 +18,24 @@ export interface ResourceTimelineProps {
   onAppointmentDrop?: (appointment: AppointmentWithRelations, employeeId: string, targetTime: string) => void;
 }
 
-export const ResourceTimeline: React.FC<ResourceTimelineProps> = ({
-  employees,
-  appointmentsByEmployee,
-  size = 'medium',
-  startTime = '09:00',
-  endTime = '18:00',
-  slotDuration = 30,
-  slotHeight = 60,
-  onAppointmentDrop,
-}) => {
+export const ResourceTimeline: React.FC<ResourceTimelineProps> = (props) => {
+  const {
+    employees,
+    appointmentsByEmployee,
+    size = 'standard',
+    startTime = '09:00',
+    endTime = '18:00',
+    slotDuration = 30,
+    slotHeight = 60,
+    onAppointmentDrop,
+  } = props;
+  const resolvedSize = (size ?? 'standard') as CalendarSize;
   return (
     <div className="crm-resource-timeline">
       <Row gutter={12} wrap={false}>
         <Col flex="120px">
           <TimeScale
-            size={size}
+            size={resolvedSize}
             startTime={startTime}
             endTime={endTime}
             slotDuration={slotDuration}
@@ -51,7 +53,7 @@ export const ResourceTimeline: React.FC<ResourceTimelineProps> = ({
                 <EmployeeColumn
                   employee={emp}
                   appointments={(appointmentsByEmployee[emp.id] || []) as AppointmentWithRelations[]}
-                  size={size as any}
+                  size={resolvedSize}
                   height={Math.ceil(((parseInt(endTime) - parseInt(startTime)) || 9) * slotHeight)}
                   onAppointmentDrop={(appointment, time) => onAppointmentDrop?.(appointment, emp.id, time)}
                 />
